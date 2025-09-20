@@ -19,7 +19,7 @@ type usecase struct {
 func New(repo domain.OTPRepository, client *smsAdapter.Client) usecase {
 	return usecase{
 		Repo: repo,
-		OTPDispatcher: &otp.Service{
+		OTPDispatcher: &otpDispatcher.Service{
 			Repo: repo,
 		},
 		SmsClient: client,

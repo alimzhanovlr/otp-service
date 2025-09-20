@@ -1,4 +1,4 @@
-package otp
+package otpDispatcher
 
 import (
 	"context"
