@@ -41,22 +41,22 @@ type RetryableAfter interface {
 type AppError struct {
 	Code    ErrorCode
 	Err     error
-	message string
+	Message string
 }
 
 func NewAppError(code ErrorCode, err error, language Language) *AppError {
 	return &AppError{
 		Code:    code,
 		Err:     err,
-		message: l10nErrMessages[code][language],
+		Message: l10nErrMessages[code][language],
 	}
 }
 
 func (e *AppError) Error() string {
 	if e.Err != nil {
-		return fmt.Sprintf("%s %s: %s", e.Code, e.message, e.Err.Error())
+		return fmt.Sprintf("%s %s: %s", e.Code, e.Message, e.Err.Error())
 	}
-	return fmt.Sprintf("%s %s", e.Code, e.message)
+	return fmt.Sprintf("%s %s", e.Code, e.Message)
 }
 func (e *AppError) Unwrap() error { return e.Err }
 
